@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Commov">
-        <activity android:name=".notas"></activity>
+        <activity android:name=".Notas"></activity>
+        <activity android:name=".AddNota"></activity>
+        <activity android:name=".EditNota"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

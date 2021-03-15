@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">commov</string>
     <string name="notas">notas</string>
+    <string name="empty_not_saved">Nota vazia!!</string>
+    <string name="inserttitulo">Titulo</string>
+    <string name="insertdesc">Descrição</string>
+    <string name="save">Guardar</string>
+    <string name="nova">Nova Nota</string>
+    <string name="edit">Editar Nota</string>
 </resources>
