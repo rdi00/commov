@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class AddNota : AppCompatActivity() {
 
@@ -28,6 +29,7 @@ class AddNota : AppCompatActivity() {
             } else {
                 replyIntent.putExtra(EXTRA_REPLY_DESC, descText.text.toString())
                 setResult(Activity.RESULT_OK, replyIntent)
+                Toast.makeText(applicationContext, "Inseriu Nota", Toast.LENGTH_SHORT).show()
             }
             finish()
         }

@@ -32,22 +32,16 @@ class NotaViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(nota)
     }
 
-    // delete all
-    fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
-        repository.deleteAll()
-    }
 
     // delete by id
     fun deleteById(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteById(id)
     }
 
-    fun getById(id: Int): LiveData<List<Nota>> {
-        return repository.getById(id)
-    }
 
-    fun update(nota: Nota) = viewModelScope.launch {
-        repository.update(nota)
+
+    fun update(desc : String, id: Int) = viewModelScope.launch {
+        repository.update(desc, id)
     }
 
 }

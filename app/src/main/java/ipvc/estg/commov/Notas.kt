@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +16,7 @@ import ipvc.estg.commov.entities.Nota
 import ipvc.estg.commov.viewModel.NotaViewModel
 
 
-class Notas : AppCompatActivity() {
+class Notas : AppCompatActivity(), NotaAdapter.getId {
 
     private lateinit var notaViewModel: NotaViewModel
     private val newWordActivityRequestCode = 1
@@ -28,7 +27,7 @@ class Notas : AppCompatActivity() {
 
         // recycler view
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val adapter = NotaAdapter(this)
+        val adapter = NotaAdapter(this, this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -46,17 +45,12 @@ class Notas : AppCompatActivity() {
             startActivityForResult(intent, newWordActivityRequestCode)
         }
 
-        val delete = findViewById<ImageView>(R.id.balde)
-        delete.setOnClickListener {
-            val ID= NotaAdapter.id
-            notaViewModel.deleteById(ID)
-        }
+
     }
 
-    fun delete(ID :Int?){
-        if (ID != null) {
-            notaViewModel.deleteById(ID)
-        }
+    override fun envia (id: Int){
+            notaViewModel.deleteById(id)
+        Toast.makeText(applicationContext, "Apagou Nota", Toast.LENGTH_SHORT).show()
 
     }
 
@@ -79,7 +73,6 @@ class Notas : AppCompatActivity() {
                 Toast.LENGTH_LONG).show()
         }
     }
-
 
 
 

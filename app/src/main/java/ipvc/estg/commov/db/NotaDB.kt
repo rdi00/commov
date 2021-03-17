@@ -31,16 +31,17 @@ public abstract class NotaDB : RoomDatabase() {
                     var notaDao = database.notaDao()
 
                     // Delete all content here.
-                    notaDao.deleteAll()
+                    //notaDao.deleteAll()
 
                     // Add sample
-                    var nota = Nota(1, "Teste")
+
+                   /* var nota = Nota(1, "Teste")
                     notaDao.insert(nota)
                     nota = Nota(2, "Relembrar")
                     notaDao.insert(nota)
                     nota = Nota(3, "Já chega")
                     notaDao.insert(nota)
-
+*/
                 }
             }
         }
