@@ -7,4 +7,5 @@
     <string name="save">Guardar</string>
     <string name="nova">Nova Nota</string>
     <string name="edit">Editar Nota</string>
+    <string name="inserttit">Adicionar titulo</string>
 </resources>

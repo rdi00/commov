@@ -13,6 +13,7 @@ class AddNota : AppCompatActivity() {
 
 
     private lateinit var descText: EditText
+    private lateinit var titText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +21,22 @@ class AddNota : AppCompatActivity() {
 
 
         descText = findViewById(R.id.desc)
+        titText = findViewById(R.id.tit)
 
         val button = findViewById<Button>(R.id.button_save)
         button.setOnClickListener {
             val replyIntent = Intent()
-            if (TextUtils.isEmpty(descText.text)) {
+            if (TextUtils.isEmpty(descText.text)  ) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
-            } else {
+            }
+            if( TextUtils.isEmpty(titText.text)  ) {
+                setResult(Activity.RESULT_CANCELED, replyIntent)
+            }
+
+            else {
                 replyIntent.putExtra(EXTRA_REPLY_DESC, descText.text.toString())
+                replyIntent.putExtra(EXTRA_REPLY_TIT, titText.text.toString())
+
                 setResult(Activity.RESULT_OK, replyIntent)
                 Toast.makeText(applicationContext, "Inseriu Nota", Toast.LENGTH_SHORT).show()
             }
@@ -37,5 +46,6 @@ class AddNota : AppCompatActivity() {
 
     companion object {
         const val EXTRA_REPLY_DESC = "com.example.android.desc"
+        const val EXTRA_REPLY_TIT = "com.example.android.tit"
     }
 }

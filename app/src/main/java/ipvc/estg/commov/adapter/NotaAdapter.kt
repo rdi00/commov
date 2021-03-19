@@ -14,6 +14,7 @@ import ipvc.estg.commov.entities.Nota
 
 const val TEXT = "TEXT"
 const val ID = "ID"
+const val TITULO = "TITULO"
 
 class NotaAdapter internal constructor(context: Context, private val getid:getId) : RecyclerView.Adapter<NotaAdapter.NotaViewHolder>() {
 
@@ -27,6 +28,7 @@ class NotaAdapter internal constructor(context: Context, private val getid:getId
 
 
     class NotaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val titItemView: TextView = itemView.findViewById(R.id.tit)
         val notaItemView: TextView = itemView.findViewById(R.id.desc)
         val editar: ImageView = itemView.findViewById(R.id.lapis)
         val apagar: ImageView = itemView.findViewById(R.id.balde)
@@ -45,6 +47,7 @@ class NotaAdapter internal constructor(context: Context, private val getid:getId
         val current = notas[position]
         val id : Int?=current.id
         holder.notaItemView.text = current.desc
+        holder.titItemView.text= current.titulo
 
 
         holder.apagar.setOnClickListener {
@@ -56,9 +59,10 @@ class NotaAdapter internal constructor(context: Context, private val getid:getId
         holder.editar.setOnClickListener {
             val context = holder.notaItemView.context
             val text = holder.notaItemView.text.toString()
-
+            val titulo = holder.titItemView.text.toString()
 
             val intent = Intent ( context, EditNota::class.java).apply{
+                putExtra(TITULO, titulo)
                 putExtra(TEXT, text)
                 putExtra(ID, id)
 

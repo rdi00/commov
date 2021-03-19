@@ -15,7 +15,13 @@
         android:textColor="@color/purple_500">
     </TextView>
 
-
+    <EditText
+        android:id="@+id/TIT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:inputType="textAutoComplete"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/DESC"

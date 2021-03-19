@@ -18,6 +18,7 @@ import ipvc.estg.commov.viewModel.NotaViewModel
 
 class Notas : AppCompatActivity(), NotaAdapter.getId {
 
+    //notas
     private lateinit var notaViewModel: NotaViewModel
     private val newWordActivityRequestCode = 1
 
@@ -60,9 +61,10 @@ class Notas : AppCompatActivity(), NotaAdapter.getId {
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
 
             val pdesc = data?.getStringExtra(AddNota.EXTRA_REPLY_DESC)
+            val ptitulo = data?.getStringExtra(AddNota.EXTRA_REPLY_TIT)
 
-            if ( pdesc != null) {
-                val nota = Nota(desc = pdesc)
+            if ( pdesc != null && ptitulo != null ) {
+                val nota = Nota(desc = pdesc, titulo=ptitulo)
                 notaViewModel.insert(nota)
             }
 

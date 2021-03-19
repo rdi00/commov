@@ -40,8 +40,8 @@ class NotaViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
-    fun update(desc : String, id: Int) = viewModelScope.launch {
-        repository.update(desc, id)
+    fun update(titulo : String, desc : String, id: Int) = viewModelScope.launch {
+        repository.update(titulo, desc, id)
     }
 
 }

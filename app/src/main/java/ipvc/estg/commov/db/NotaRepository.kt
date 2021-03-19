@@ -30,8 +30,8 @@ class NotaRepository(private val notaDao: NotaDao) {
         notaDao.deleteById(id)
     }
 
-    suspend fun update(desc: String, id: Int) {
-        notaDao.update(desc, id)
+    suspend fun update(titulo: String, desc: String, id: Int) {
+        notaDao.update(titulo, desc, id)
     }
 
 }

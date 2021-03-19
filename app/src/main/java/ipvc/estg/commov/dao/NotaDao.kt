@@ -16,8 +16,8 @@ interface NotaDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(nota: Nota)
 
-    @Query("UPDATE nota_table SET desc = :desc WHERE id == :id")
-    suspend fun update(desc: String, id: Int?)
+    @Query("UPDATE nota_table SET desc = :desc, titulo = :titulo WHERE id == :id")
+    suspend fun update(titulo: String, desc: String, id: Int?)
 
     @Query("DELETE FROM nota_table")
     suspend fun deleteAll()
