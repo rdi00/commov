@@ -8,4 +8,11 @@
     <string name="nova">Nova Nota</string>
     <string name="edit">Editar Nota</string>
     <string name="inserttit">Adicionar titulo</string>
+    <string name="city_report">City Report</string>
+    <string name="login">Login</string>
+    <string name="registar">Registar</string>
+    <string name="email_vazio_error">É necessário inserir email</string>
+    <string name="pass_vazia_Error">Password vazia</string>
+    <string name="email_pass_empy">Insira email e password</string>
+    <string name="email_pass_error">Email ou password incorretos</string>
 </resources>

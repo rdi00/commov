@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ipvc.estg.commov">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Commov">
-        <activity android:name=".Notas"></activity>
-        <activity android:name=".AddNota"></activity>
-        <activity android:name=".EditNota"></activity>
+        <activity android:name=".MapReports"></activity>
+        <activity android:name=".Notas" />
+        <activity android:name=".AddNota" />
+        <activity android:name=".EditNota" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
