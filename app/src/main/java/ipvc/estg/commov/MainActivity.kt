@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val request = ServiceBuilder.buildService(Endpoints::class.java)
         val call = request.getUserByEmail(emailtext.text.toString())
-        val intent = Intent(this, MapReports::class.java)
+        val intent = Intent(this, MapsReport::class.java)
 
         if (emailtext.text.toString().isNullOrEmpty() && passtext.text.toString().isNullOrEmpty()) {
             Toast.makeText(applicationContext, getString(R.string.email_pass_empy), Toast.LENGTH_SHORT).show()

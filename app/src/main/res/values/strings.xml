@@ -15,4 +15,5 @@
     <string name="pass_vazia_Error">Password vazia</string>
     <string name="email_pass_empy">Insira email e password</string>
     <string name="email_pass_error">Email ou password incorretos</string>
+    <string name="title_activity_maps_report">Map</string>
 </resources>
