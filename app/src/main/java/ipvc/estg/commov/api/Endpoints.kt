@@ -11,8 +11,9 @@ interface Endpoints {
     @GET("/users/")
     fun getUsers(): Call<List<User>>
 
-    @GET("/users/{email}")
+    @GET("users/{email}")
     fun getUserByEmail(@Path("email") email: String): Call<User>
 
-
+    @GET("reports")
+    fun getReports(): Call<List<Report>>
 }

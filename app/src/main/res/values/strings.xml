@@ -16,4 +16,13 @@
     <string name="email_pass_empy">Insira email e password</string>
     <string name="email_pass_error">Email ou password incorretos</string>
     <string name="title_activity_maps_report">Map</string>
+    <string name="title_activity_map_reports">Map</string>
+    <string name="preference_file_key">sp</string>
+    <string name="sharedlogin">loginsp</string>
+    <string name="sharedemail">emailsp</string>
+    <string name="shareduser">idusersp</string>
+    <string name="pergunta_fim_Sessao">Deseja Terminar Sessão?</string>
+    <string name="logout_alert_title">Logout</string>
+    <string name="resposta_alert_Sim">Sim</string>
+    <string name="resposta_alert_nao">Não</string>
 </resources>

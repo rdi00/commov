@@ -31,9 +31,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".MapReports"
+            android:label="@string/title_activity_map_reports"></activity>
+        <activity
             android:name=".MapsReport"
-            android:label="@string/title_activity_maps_report"></activity>
-        <activity android:name=".MapReports" />
+            android:label="@string/title_activity_maps_report" />
         <activity android:name=".Notas" />
         <activity android:name=".AddNota" />
         <activity android:name=".EditNota" />
