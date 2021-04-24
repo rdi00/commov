@@ -1,6 +1,7 @@
 package ipvc.estg.commov.api
 
 import java.sql.Date
+import java.sql.Timestamp
 import java.text.DateFormat
 
 
@@ -12,6 +13,6 @@ data class Report(
     val longitude: Float,
     val user_id: Int,
     val estado: String,
-    val data_criacao: Date
+    val data_criacao: Timestamp
 
 )

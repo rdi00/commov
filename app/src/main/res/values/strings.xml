@@ -25,4 +25,6 @@
     <string name="logout_alert_title">Logout</string>
     <string name="resposta_alert_Sim">Sim</string>
     <string name="resposta_alert_nao">Não</string>
+    <string name="coords_txt_view">Coordenadas:</string>
+    <string name="loc">Localização Atual</string>
 </resources>
