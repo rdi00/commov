@@ -149,6 +149,7 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
     override fun onBackPressed() {
         alertLogout(window.decorView.rootView)
     }
+    
 
     companion object {
 
