@@ -12,6 +12,8 @@ data class Report(
     val longitude: Float,
     val user_id: Int,
     val estado: String,
-    val data_criacao: Date
+    val data_criacao: String,
+    val tipo: String,
+    val imagem: String
 
 )

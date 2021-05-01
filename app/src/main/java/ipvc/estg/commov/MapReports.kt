@@ -7,10 +7,7 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.os.Looper
-import android.util.Log
 import android.view.View
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -31,6 +28,7 @@ import ipvc.estg.commov.api.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -50,7 +48,7 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_reports)
         val sharedPref: SharedPreferences = getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
         )
 
         val iduser= sharedPref.getInt(getString(R.string.shareduser), 0)
@@ -69,15 +67,37 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                 if (response.isSuccessful) {
                     reports = response.body()!!
                     for (report in reports) {
-                        var anomesdia = toSimpleString(report.data_criacao)
-                        if (report.user_id == iduser) {
-                            pos = LatLng(report.latitude.toString().toDouble(), report.longitude.toString().toDouble())
-                            mMap.addMarker(MarkerOptions().position(pos).title(report.titulo).snippet(report.descricao + "\n" + "Data: " + anomesdia).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)))
-                            mMap.setInfoWindowAdapter( InfoWindowAdapter(this@MapReports))
-                        } else{
 
-                            pos = LatLng(report.latitude.toString().toDouble(), report.longitude.toString().toDouble())
-                            mMap.addMarker(MarkerOptions().position(pos).title(report.titulo).snippet(report.descricao + "\n" + "Data: " + anomesdia).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)))
+                        if (report.user_id == iduser) {
+                            pos = LatLng(
+                                report.latitude.toString().toDouble(),
+                                report.longitude.toString().toDouble()
+                            )
+                            mMap.addMarker(
+                                MarkerOptions().position(pos).title(report.titulo).snippet(
+                                    report.descricao + "\n" + "Data: " + report.data_criacao
+                                ).icon(
+                                    BitmapDescriptorFactory.defaultMarker(
+                                        BitmapDescriptorFactory.HUE_VIOLET
+                                    )
+                                )
+                            )
+                            mMap.setInfoWindowAdapter(InfoWindowAdapter(this@MapReports))
+                        } else {
+
+                            pos = LatLng(
+                                report.latitude.toString().toDouble(),
+                                report.longitude.toString().toDouble()
+                            )
+                            mMap.addMarker(
+                                MarkerOptions().position(pos).title(report.titulo).snippet(
+                                    report.descricao + "\n" + "Data: " + report.data_criacao
+                                ).icon(
+                                    BitmapDescriptorFactory.defaultMarker(
+                                        BitmapDescriptorFactory.HUE_RED
+                                    )
+                                )
+                            )
                             mMap.setInfoWindowAdapter(InfoWindowAdapter(this@MapReports))
                         }
                     }
@@ -97,7 +117,13 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                 super.onLocationResult(p0)
                 lastLocation = p0.lastLocation
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
-                mMap.addMarker(MarkerOptions().position(loc).icon(BitmapDescriptorFactory.fromResource(R.drawable.bluemarker)).title(getString(R.string.loc)))
+                mMap.addMarker(
+                    MarkerOptions().position(loc).icon(
+                        BitmapDescriptorFactory.fromResource(
+                            R.drawable.bluemarker
+                        )
+                    ).title(getString(R.string.loc))
+                )
 
                 val center = findViewById<FloatingActionButton>(R.id.centeractionbtn)
                 center.setOnClickListener{
@@ -116,17 +142,13 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    fun toSimpleString(date: Date?) = with(date ?: Date()) {
-        SimpleDateFormat("yyyy-MM-dd").format(this)
-    }
-
     fun alertLogout(view: View) {
         val alertDialog: AlertDialog.Builder = AlertDialog.Builder(this@MapReports)
         alertDialog.setTitle(getString(R.string.logout_alert_title))
         alertDialog.setMessage(getString(R.string.pergunta_fim_Sessao))
         alertDialog.setPositiveButton(getString(R.string.resposta_alert_Sim)) { dialog: DialogInterface?, which: Int ->
             val sharedPref: SharedPreferences = getSharedPreferences(
-                    getString(R.string.preference_file_key), Context.MODE_PRIVATE
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE
             )
             with(sharedPref.edit()){
                 putBoolean(getString(R.string.sharedlogin), false)
@@ -182,16 +204,33 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
 
     //buscar coordenadas
     private fun startLocationUpdates() {
-        if (ActivityCompat.checkSelfPermission(this,
-                        android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions(this,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    LOCATION_PERMISSION_REQUEST_CODE)
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
             return
         }
-        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null )
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
     }
+/**
+    fun addReport(view: View) {
+        val intent = Intent(this, AddReport::class.java).apply { putExtra(
+            "local", LatLng(
+                lastLocation.latitude,
+                lastLocation.longitude
+            )
+        )}
+        startActivity(intent)
+    }
+    */
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.

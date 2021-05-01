@@ -27,4 +27,11 @@
     <string name="resposta_alert_nao">Não</string>
     <string name="coords_txt_view">Coordenadas:</string>
     <string name="loc">Localização Atual</string>
+    <string name="transito">Trânsito</string>
+    <string name="obras">Obras</string>
+    <string name="buraco">Buraco</string>
+    <string name="acidente">Acidente</string>
+    <string name="outros">Outros</string>
+    <string name="rport_add_sucesso">Report adicionado com sucesso</string>
+    <string name="erro_add_report">Erro ao inserir report</string>
 </resources>
