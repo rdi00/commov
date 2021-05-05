@@ -75,13 +75,15 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                             )
                             mMap.addMarker(
                                 MarkerOptions().position(pos).title(report.titulo).snippet(
-                                    report.descricao + "\n" + "Data: " + report.data_criacao
+                                        report.descricao + "\n" + "Data: " + report.data_criacao + "_" + report.user_id + "_" + iduser + "_" + report.imagem
                                 ).icon(
                                     BitmapDescriptorFactory.defaultMarker(
                                         BitmapDescriptorFactory.HUE_VIOLET
                                     )
                                 )
+
                             )
+
                             mMap.setInfoWindowAdapter(InfoWindowAdapter(this@MapReports))
                         } else {
 
@@ -91,7 +93,7 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                             )
                             mMap.addMarker(
                                 MarkerOptions().position(pos).title(report.titulo).snippet(
-                                    report.descricao + "\n" + "Data: " + report.data_criacao
+                                    report.descricao + "\n" + "Data: " + report.data_criacao + "_" + report.user_id + "_" + iduser + "_" + report.imagem
                                 ).icon(
                                     BitmapDescriptorFactory.defaultMarker(
                                         BitmapDescriptorFactory.HUE_RED
@@ -117,14 +119,8 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                 super.onLocationResult(p0)
                 lastLocation = p0.lastLocation
                 var loc = LatLng(lastLocation.latitude, lastLocation.longitude)
-                mMap.addMarker(
-                    MarkerOptions().position(loc).icon(
-                        BitmapDescriptorFactory.fromResource(
-                            R.drawable.bluemarker
-                        )
-                    ).title(getString(R.string.loc))
-                )
-
+                //mMap.addMarker(MarkerOptions().position(loc).icon(
+                        //BitmapDescriptorFactory.fromResource(R.drawable.bluemarker)))
                 val center = findViewById<FloatingActionButton>(R.id.centeractionbtn)
                 center.setOnClickListener{
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 15f))
@@ -218,17 +214,25 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
         }
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
     }
-/**
+
     fun addReport(view: View) {
+
+        //Abrir o shared preferences
+        val sharedPref: SharedPreferences = getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE
+        )
+        //Utilizador com sessão iniciada
+        var user_id = sharedPref.all[getString(R.string.shareduser)]
         val intent = Intent(this, AddReport::class.java).apply { putExtra(
             "local", LatLng(
                 lastLocation.latitude,
                 lastLocation.longitude
             )
-        )}
+        )
+        putExtra("user_id", user_id.toString())}
         startActivity(intent)
     }
-    */
+
 
 
     /**

@@ -34,4 +34,9 @@
     <string name="outros">Outros</string>
     <string name="rport_add_sucesso">Report adicionado com sucesso</string>
     <string name="erro_add_report">Erro ao inserir report</string>
+    <string name="Nomeimg">Nome</string>
+    <string name="reportTitAdd">Titulo do report</string>
+    <string name="descRepAdd">Descrição do report</string>
+    <string name="EscolherIMG">Escolher</string>
+    <string name="addreportbtn">Adicionar</string>
 </resources>

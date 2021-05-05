@@ -11,20 +11,22 @@
         android:id="@+id/tipos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toTopOf="@+id/addimg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toEndOf="@+id/textView7" />
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/addimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="188dp"
-        android:layout_marginBottom="32dp"
-        android:onClick= "getImage"
+        android:layout_marginBottom="52dp"
+        android:onClick="getImage"
         android:text="Inserir"
         app:layout_constraintBottom_toTopOf="@+id/imgadd"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -34,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="56dp"
         android:text="Tipo"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
@@ -67,14 +69,14 @@
 
     <EditText
         android:id="@+id/editTitulo"
-        android:layout_width="211dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
+        android:hint="@string/reportTitAdd"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -84,25 +86,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/insertdesc"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
         android:id="@+id/editdesc"
-        android:layout_width="255dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
+        android:hint="@string/descRepAdd"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/tipos"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/editTitulo"
-        app:layout_constraintVertical_bias="0.367" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <ImageView
         android:id="@+id/imgadd"
@@ -118,8 +123,8 @@
         android:id="@+id/addreport"
         android:layout_width="177dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="32dp"
-        android:text="Adicionar"
+        android:layout_marginBottom="16dp"
+        android:text="@string/addreportbtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -128,12 +133,11 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="72dp"
         android:text="Imagem"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/imgadd"
-        app:layout_constraintEnd_toStartOf="@+id/addimg"
-        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
