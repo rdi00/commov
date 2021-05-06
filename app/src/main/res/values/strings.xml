@@ -45,4 +45,6 @@
     <string name="elimR">Eliminar</string>
     <string name="atualizaReport">Report Atualizado</string>
     <string name="erroAtualizaReport">\"Erro ao atualizar Report \"</string>
+    <string name="erroElim">Report Eliminado com sucesso</string>
+    <string name="erroElimerro">Erro ao eliminar Report</string>
 </resources>

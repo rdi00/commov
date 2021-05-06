@@ -69,7 +69,7 @@ class AlteraReport : AppCompatActivity() {
         //6-data
 
         val id = campos[4].toInt()
-        Log.d("AAAAAAAAAAAA", id.toString())
+        //Log.d("AAAAAAAAAAAA", id.toString())
 
         val editadoT = findViewById<EditText>(R.id.editTituloR).text.toString()
         val editadoD = findViewById<EditText>(R.id.DescEditR).text.toString()
@@ -86,6 +86,42 @@ class AlteraReport : AppCompatActivity() {
 
                 }else {
                     Toast.makeText(this@AlteraReport, getString(R.string.erroAtualizaReport), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ReportResponse>, t: Throwable) {
+                Toast.makeText(this@AlteraReport, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun eliminar(view: View){
+        var intent = intent
+        val snip = intent.getStringExtra("snip")
+
+        val campos = snip.split("_")
+        //0-descriçao
+        //1-report userid
+        //2-id user sharedp
+        //3-imagem
+        //4-id report
+        //5- tipo
+        //6-data
+
+        val id = campos[4].toInt()
+
+        val request = ServiceBuilder.buildService(Endpoints::class.java)
+        val call = request.deleteReport(id)
+        var intenta = Intent(this, MapReports::class.java)
+
+        call.enqueue(object : Callback<ReportResponse> {
+            override fun onResponse(call: Call<ReportResponse>, response: Response<ReportResponse>) {
+                if (response.isSuccessful){
+                    Toast.makeText(this@AlteraReport, getString(R.string.erroElim), Toast.LENGTH_LONG).show()
+                    startActivity(intenta)
+
+                }else {
+                    Toast.makeText(this@AlteraReport, getString(R.string.erroElimerro), Toast.LENGTH_SHORT).show()
                 }
             }
 

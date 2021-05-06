@@ -28,4 +28,8 @@ interface Endpoints {
                          @Field ("titulo") titulo: String,
                          @Field ("descricao") descricao: String): Call<ReportResponse>
 
+
+    @POST("reportdel/{id}")
+    fun deleteReport(@Path("id") id: Int): Call<ReportResponse>
+
 }
