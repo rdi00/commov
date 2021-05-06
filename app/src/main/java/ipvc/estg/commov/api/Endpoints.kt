@@ -20,6 +20,12 @@ interface Endpoints {
             @Field("longitude")longitude:String,
             @Field("user_id")user_id:Int,
             @Field("tipo")tipo:String,
-            @Field("imagem")imagem:String) : Call<ReportAdd>
+            @Field("imagem")imagem:String) : Call<ReportResponse>
+
+    @FormUrlEncoded
+    @POST("reportupdate/{id}")
+    fun editReports(@Path("id") id: Int,
+                         @Field ("titulo") titulo: String,
+                         @Field ("descricao") descricao: String): Call<ReportResponse>
 
 }

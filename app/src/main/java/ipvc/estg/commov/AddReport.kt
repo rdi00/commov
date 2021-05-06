@@ -1,9 +1,7 @@
 package ipvc.estg.commov
 
-import android.content.Context
 import android.util.Log
 import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +16,6 @@ import retrofit2.Response
 import java.io.*
 import java.util.*
 import com.google.android.gms.location.*
-import okhttp3.ResponseBody
 
 
 class AddReport : AppCompatActivity() {
@@ -78,8 +75,8 @@ class AddReport : AppCompatActivity() {
                     val request = ServiceBuilder.buildService(Endpoints::class.java)
                     val call = request.newReport(titulo = titulo.text.toString(),descricao = descricao.text.toString(),latitude = latitude.toString(),longitude = longitude.toString(),user_id = user_id,tipo =  tipo.toString(),imagem = imagem.toString())
 
-            call.enqueue(object : Callback<ReportAdd> {
-                            override fun onResponse(call: Call<ReportAdd>, response: Response<ReportAdd>) {
+            call.enqueue(object : Callback<ReportResponse> {
+                            override fun onResponse(call: Call<ReportResponse>, response: Response<ReportResponse>) {
                                 if (response.isSuccessful) {
                                     Log.d("*******OLA*****", response.body().toString())
                                     Toast.makeText(this@AddReport, getString(R.string.rport_add_sucesso), Toast.LENGTH_SHORT).show()
@@ -92,7 +89,7 @@ class AddReport : AppCompatActivity() {
                                 }
                             }
 
-                            override fun onFailure(call: Call<ReportAdd>, t:Throwable) {
+                            override fun onFailure(call: Call<ReportResponse>, t:Throwable) {
 
                                 Toast.makeText(this@AddReport, "${t.message}", Toast.LENGTH_SHORT).show()
                             }

@@ -75,7 +75,7 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                             )
                             mMap.addMarker(
                                 MarkerOptions().position(pos).title(report.titulo).snippet(
-                                        report.descricao + "\n" + "Data: " + report.data_criacao + "_" + report.user_id + "_" + iduser + "_" + report.imagem
+                                    report.descricao + "_" + report.user_id + "_" + iduser + "_" + report.imagem + "_" + report.id + "_" + report.tipo + "_" + report.data_criacao
                                 ).icon(
                                     BitmapDescriptorFactory.defaultMarker(
                                         BitmapDescriptorFactory.HUE_VIOLET
@@ -85,6 +85,14 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                             )
 
                             mMap.setInfoWindowAdapter(InfoWindowAdapter(this@MapReports))
+                            mMap.setOnInfoWindowClickListener { marker ->
+                                val intent = Intent(this@MapReports, AlteraReport::class.java).apply{
+                                    putExtra("tit", marker.title)
+                                    putExtra("snip", marker.snippet)
+
+                                }
+                                startActivity(intent)
+                            }
                         } else {
 
                             pos = LatLng(
@@ -93,7 +101,7 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                             )
                             mMap.addMarker(
                                 MarkerOptions().position(pos).title(report.titulo).snippet(
-                                    report.descricao + "\n" + "Data: " + report.data_criacao + "_" + report.user_id + "_" + iduser + "_" + report.imagem
+                                    report.descricao + "_" + report.user_id + "_" + iduser + "_" + report.imagem + "_" + report.id + "_" + report.tipo + "_" + report.data_criacao
                                 ).icon(
                                     BitmapDescriptorFactory.defaultMarker(
                                         BitmapDescriptorFactory.HUE_RED
@@ -101,6 +109,14 @@ class MapReports : AppCompatActivity(), OnMapReadyCallback {
                                 )
                             )
                             mMap.setInfoWindowAdapter(InfoWindowAdapter(this@MapReports))
+                            mMap.setOnInfoWindowClickListener { marker ->
+                                val intent = Intent(this@MapReports, AlteraReport::class.java).apply{
+                                    putExtra("tit", marker.title)
+                                    putExtra("snip", marker.snippet)
+
+                                }
+                                startActivity(intent)
+                            }
                         }
                     }
 

@@ -39,4 +39,10 @@
     <string name="descRepAdd">Descrição do report</string>
     <string name="EscolherIMG">Escolher</string>
     <string name="addreportbtn">Adicionar</string>
+    <string name="Report">Report</string>
+    <string name="Descricao">Descrição</string>
+    <string name="editR">Editar</string>
+    <string name="elimR">Eliminar</string>
+    <string name="atualizaReport">Report Atualizado</string>
+    <string name="erroAtualizaReport">\"Erro ao atualizar Report \"</string>
 </resources>
